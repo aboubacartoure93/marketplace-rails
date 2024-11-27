@@ -1,0 +1,28 @@
+<div class="w-full h-16 bg-gray-900 fixed top-0 z-[999]">
+	<div class="max-w-7xl w-full mx-auto flex items-center justify-between h-full px-4">
+		<%= link_to "Home", "/", class: "text-xl text-gray-100"  %>
+		
+		<% if Current.user %>
+			<div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeIfOutside">
+				<%= link_to "#", data: {action: "dropdown#toggle"} do %>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-10 text-gray-50">
+	  				<path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+					</svg>
+				<% end %>
+
+
+				<div class="absolute top-12 right-0 w-64 h-40 rounded-lg bg-gray-200 p-3 flex flex-col hidden" data-dropdown-target="menu">
+					<%= link_to "Create listing", new_listing_path, class: "text-xl text-gray-900" %>
+					<%= link_to "Sign out", session_url, class: "mt-auto mr-auto bg-gray-500 text-gray-50 rounded-lg px-3 py-2", data: {turbo_method: :delete} %>
+				</div>
+			</div>
+
+
+		<% end %>
+
+	</div>
+
+</div>
+
+
+
